@@ -7,38 +7,26 @@
 		</div>
 		
 		<nav class="flex flex-1 flex-col">
+			
 			<ul role="list" class="flex flex-1 flex-col gap-y-7">
 				
-				{{-- Each section --}}
+				@foreach($navigation->sections as $section)
+					
 				<li>
 					<x-navigation.desktop.section>
-						Getting started
+						{{ $section->title }}
 					</x-navigation.desktop.section>
 					
 					<ul role="list" class="-mx-2 space-y-1">
-						<x-navigation.desktop.item href="#" active>
-							Start here
-						</x-navigation.desktop.item>
-						<x-navigation.desktop.item href="#">
-							Common gotchas
-						</x-navigation.desktop.item>
+						@foreach($section->items as $item)
+							<x-navigation.desktop.item href="#">
+								{{ $item->title }}
+							</x-navigation.desktop.item>
+						@endforeach
 					</ul>
 				</li>
 				
-				<li>
-					<x-navigation.desktop.section>
-						Digging deeper
-					</x-navigation.desktop.section>
-					
-					<ul role="list" class="-mx-2 space-y-1">
-						<x-navigation.desktop.item href="#">
-							Lifecycle hooks
-						</x-navigation.desktop.item>
-						<x-navigation.desktop.item href="#">
-							What are snowflakes?
-						</x-navigation.desktop.item>
-					</ul>
-				</li>
+				@endforeach
 				
 				{{--
 				<li class="mt-auto">
