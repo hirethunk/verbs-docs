@@ -10,12 +10,12 @@
 		{{ $title ? "$title - Verbs" : 'Verbs' }}
 	</title>
 </head>
-<body class="flex flex-col min-h-full bg-white antialiased dark:bg-zinc-900">
+<body class="flex flex-col min-h-full bg-[#f8ecdb] antialiased dark:bg-zinc-900">
 
 <x-navigation.mobile />
 <x-navigation.desktop />
 
-<div class="lg:pl-72 flex-1">
+<div class="lg:pl-72 flex-1 bg-white">
 	<x-header />
 	
 	<main class="py-10">

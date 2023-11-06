@@ -1,6 +1,6 @@
 <x-layout :title="$page->title">
 	
-	<h1 class="text-2xl font-semibold text-yellow-500 text-opacity-90 mb-6">
+	<h1 class="text-2xl font-semibold text-stone-500 mb-6">
 		{{ $page->title }}
 	</h1>
 	
