@@ -24,6 +24,7 @@
 								<x-navigation.desktop.item
 									:href="route('docs.section.item', [$section, $item])"
 									:active="$item === $active_item"
+									:icon="$item->icon"
 								>
 									{{ $item->title }}
 								</x-navigation.desktop.item>

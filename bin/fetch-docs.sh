@@ -13,17 +13,29 @@ DOCS_VERSIONS=(
 )
 
 for v in "${DOCS_VERSIONS[@]}"; do
-    if [ -d "storage/docs/_tmp" ]; then
-        echo "Removing previous temp files..."
-        rm -rf storage/docs/_tmp
-    fi
-    
-    echo "Cloning $v..."
-    git clone --single-branch --branch "$v" https://github.com/hirethunk/verbs "storage/docs/_tmp"
-    
-    echo "Copying $v docs..."
-    mv "storage/docs/_tmp/docs" "storage/docs/$v"
-    
-    echo "Removing temp files..."
+  echo ""
+  echo "Fetching '$v' docs"
+  echo "======================================"
+  echo ""
+  
+  if [ -d "storage/docs/_tmp" ]; then
+    echo "Removing previous temp files..."
     rm -rf storage/docs/_tmp
+  fi
+  
+  echo "Cloning $v..."
+  git clone --quiet --single-branch --branch "$v" https://github.com/hirethunk/verbs "storage/docs/_tmp"
+  
+  if [ -d "storage/docs/$v" ]; then
+    echo "Removing previous copy of $v..."
+    rm -rf "storage/docs/$v"
+  fi
+  
+  echo "Copying $v docs..."
+  mv -f "storage/docs/_tmp/docs" "storage/docs/$v"
+  
+  echo "Removing temp files..."
+  rm -rf storage/docs/_tmp
+  
+  echo ""
 done

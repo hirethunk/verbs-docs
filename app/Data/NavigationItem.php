@@ -13,18 +13,14 @@ class NavigationItem extends Data implements UrlRoutable
 	public function __construct(
 		public string $title,
 		public string $slug,
-		public string $file,
+		public string $icon = 'heroicon-o-document',
 	) {
-	}
-	
-	public function href(): string
-	{
-		return '/docs/'.$this->slug;
+		$this->icon = str($this->icon)->start('heroicon-o-')->toString();
 	}
 	
 	public function page(): Page
 	{
-		return $this->page ??= new Page('main', $this->file, $this->title);
+		return $this->page ??= new Page('main', "{$this->slug}.md", $this->title);
 	}
 	
 	public function getRouteKey()

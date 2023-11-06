@@ -12,6 +12,7 @@ use League\CommonMark\Extension\Strikethrough\StrikethroughExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\Extension\TaskList\TaskListExtension;
 use League\CommonMark\MarkdownConverter as BaseConverter;
+use Torchlight\Commonmark\V2\TorchlightExtension;
 
 class MarkdownConverter extends BaseConverter
 {
@@ -28,13 +29,11 @@ class MarkdownConverter extends BaseConverter
 				$environment->addExtension(new StrikethroughExtension());
 				$environment->addExtension(new TableExtension());
 				$environment->addExtension(new TaskListExtension());
+				$environment->addExtension(new TorchlightExtension());
 			}
 		});
 		
 		$environment->addExtension(new AttributesExtension());
-		
-		// use Torchlight\Commonmark\V2\TorchlightExtension;
-		// $environment->addExtension(new TorchlightExtension());
 		
 		parent::__construct($environment);
 	}
