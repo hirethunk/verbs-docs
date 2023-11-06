@@ -24,7 +24,7 @@
 				x-data
 				@click="alert('Coming soon!')"
 				type="button" 
-				class="bg-white rounded-full border px-3 py-1 text-zinc-500 text-xs inline-flex items-center space-x-4"
+				class="bg-white rounded-full px-3 py-1 text-zinc-500 text-xs inline-flex items-center space-x-4 transition ring-1 ring-inset ring-black/[0.08] hover:ring-black/[0.20]"
 			>
 				<svg class="pointer-events-none h-full w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 					<path fill-rule="evenodd"

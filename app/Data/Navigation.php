@@ -18,4 +18,9 @@ class Navigation extends Data
 		
 		$this->sections = NavigationSection::collection($data);
 	}
+	
+	public function section(string $slug): ?NavigationSection
+	{
+		return $this->sections->first(fn (NavigationSection $section) => $section->slug === $slug);
+	}
 }

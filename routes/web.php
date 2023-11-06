@@ -1,6 +1,9 @@
 <?php
 
+use App\Data\Navigation;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/docs/{section}/{item}', function(string $section, string $item) {
+	$section = app(Navigation::class)->section($section);
+	$item = $section->item($item);
+	
+	View::share('active_item', $item);
+	
+	return view('docs.page', [
+		'page' => $item->page()
+	]);
+})->name('docs.section.item');

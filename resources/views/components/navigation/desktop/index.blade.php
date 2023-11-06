@@ -19,7 +19,10 @@
 					
 					<ul role="list" class="-mx-2 space-y-1">
 						@foreach($section->items as $item)
-							<x-navigation.desktop.item href="{{ $item->href() }}">
+							<x-navigation.desktop.item 
+								:href="route('docs.section.item', [$section, $item])"
+								:active="$item === $active_item"
+							>
 								{{ $item->title }}
 							</x-navigation.desktop.item>
 						@endforeach
