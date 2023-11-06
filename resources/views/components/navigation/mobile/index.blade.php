@@ -56,36 +56,21 @@
 				<nav class="flex flex-1 flex-col">
 					<ul role="list" class="flex flex-1 flex-col gap-y-7">
 						
-						{{-- Each section --}}
+						@foreach($navigation->sections as $section)
 						<li>
 							<x-navigation.mobile.section>
-								Getting started
+								{{ $section->title }}
 							</x-navigation.mobile.section>
 							
 							<ul role="list" class="-mx-2 space-y-1">
-								<x-navigation.mobile.item href="#" active>
-									Start here
-								</x-navigation.mobile.item>
-								<x-navigation.mobile.item href="#">
-									Common gotchas
-								</x-navigation.mobile.item>
+								@foreach($section->items as $item)
+									<x-navigation.mobile.item href="{{ $item->href() }}">
+										{{ $item->title }}
+									</x-navigation.mobile.item>
+								@endforeach
 							</ul>
 						</li>
-						
-						<li>
-							<x-navigation.mobile.section>
-								Digging deeper
-							</x-navigation.mobile.section>
-							
-							<ul role="list" class="-mx-2 space-y-1">
-								<x-navigation.mobile.item href="#">
-									Lifecycle hooks
-								</x-navigation.mobile.item>
-								<x-navigation.mobile.item href="#">
-									What are snowflakes?
-								</x-navigation.mobile.item>
-							</ul>
-						</li>
+						@endforeach
 						
 						{{--
 						<li class="mt-auto">

@@ -12,4 +12,9 @@ class NavigationItem extends Data
 		public string $file,
 	) {
 	}
+	
+	public function href(): string
+	{
+		return '/docs/'.$this->uri;
+	}
 }

@@ -19,7 +19,7 @@
 					
 					<ul role="list" class="-mx-2 space-y-1">
 						@foreach($section->items as $item)
-							<x-navigation.desktop.item href="#">
+							<x-navigation.desktop.item href="{{ $item->href() }}">
 								{{ $item->title }}
 							</x-navigation.desktop.item>
 						@endforeach

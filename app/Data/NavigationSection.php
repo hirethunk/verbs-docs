@@ -10,6 +10,7 @@ class NavigationSection extends Data
 {
 	public function __construct(
 		public string $title,
+		/** @var DataCollection<int, \App\Data\NavigationItem> $items */
 		#[DataCollectionOf(NavigationItem::class)] public DataCollection $items,
 	) {
 	}

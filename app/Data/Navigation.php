@@ -8,6 +8,7 @@ use Spatie\LaravelData\DataCollection;
 
 class Navigation extends Data
 {
+	/** @var DataCollection<int, \App\Data\NavigationSection> */
 	public DataCollection $sections;
 	
 	public function __construct(Filesystem $fs)
