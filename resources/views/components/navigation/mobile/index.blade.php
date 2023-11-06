@@ -3,11 +3,11 @@
 	x-data="{ open: false }"
 	x-show="open"
 	@open-sidebar.window="open = true"
-	class="relative z-50 lg:hidden" 
-	role="dialog" 
+	class="relative z-50 lg:hidden"
+	role="dialog"
 	aria-modal="true"
 >
-	<div 
+	<div
 		class="fixed inset-0 bg-gray-900/80"
 		x-show="open"
 		x-transition:enter="transition-opacity ease-linear duration-300"
@@ -19,7 +19,7 @@
 	></div>
 	
 	<div class="fixed inset-0 flex">
-		<div 
+		<div
 			class="relative mr-16 flex w-full max-w-xs flex-1"
 			x-show="open"
 			x-transition:enter="transition ease-in-out duration-300 transform"
@@ -29,7 +29,7 @@
 			x-transition:leave-start="translate-x-0"
 			x-transition:leave-end="-translate-x-full"
 		>
-			<div 
+			<div
 				class="absolute left-full top-0 flex w-16 justify-center pt-5"
 				x-show="open"
 				x-transition:enter="transition-opacity ease-in-out duration-300"
@@ -49,30 +49,32 @@
 			
 			<div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
 				
-				<div class="flex h-16 shrink-0 items-center">
-					<x-navigation.logo class="h-8 w-auto" />
+				<div class="flex h-24 shrink-0 items-center justify-center">
+					<a href="/">
+						<x-navigation.logo class="h-24 w-auto" />
+					</a>
 				</div>
 				
 				<nav class="flex flex-1 flex-col">
 					<ul role="list" class="flex flex-1 flex-col gap-y-7">
 						
 						@foreach($navigation->sections as $section)
-						<li>
-							<x-navigation.mobile.section>
-								{{ $section->title }}
-							</x-navigation.mobile.section>
-							
-							<ul role="list" class="-mx-2 space-y-1">
-								@foreach($section->items as $item)
-									<x-navigation.mobile.item
-										:href="route('docs.section.item', [$section, $item])"
-										:active="$item === $active_item"
-									>
-										{{ $item->title }}
-									</x-navigation.mobile.item>
-								@endforeach
-							</ul>
-						</li>
+							<li>
+								<x-navigation.mobile.section>
+									{{ $section->title }}
+								</x-navigation.mobile.section>
+								
+								<ul role="list" class="-mx-2 space-y-1">
+									@foreach($section->items as $item)
+										<x-navigation.mobile.item
+											:href="route('docs.section.item', [$section, $item])"
+											:active="$item === $active_item"
+										>
+											{{ $item->title }}
+										</x-navigation.mobile.item>
+									@endforeach
+								</ul>
+							</li>
 						@endforeach
 						
 						{{--

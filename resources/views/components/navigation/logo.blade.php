@@ -1,5 +1,5 @@
 <img
 	{{ $attributes }}
-	src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+	src="{{ asset('logo.png') }}"
 	alt="Verbs"
 >

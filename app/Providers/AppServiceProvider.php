@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
 	
 	public function boot(): void
 	{
+		View::share('active_item', null);
 		View::share('navigation', app(Navigation::class));
 	}
 }

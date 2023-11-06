@@ -2,8 +2,10 @@
 	
 	<div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
 		
-		<div class="flex h-16 shrink-0 items-center">
-			<x-navigation.logo class="h-8 w-auto" />
+		<div class="flex h-24 mt-5 shrink-0 items-center">
+			<a href="/">
+				<x-navigation.logo class="h-24 w-auto" />
+			</a>
 		</div>
 		
 		<nav class="flex flex-1 flex-col">
@@ -12,22 +14,22 @@
 				
 				@foreach($navigation->sections as $section)
 					
-				<li>
-					<x-navigation.desktop.section>
-						{{ $section->title }}
-					</x-navigation.desktop.section>
-					
-					<ul role="list" class="-mx-2 space-y-1">
-						@foreach($section->items as $item)
-							<x-navigation.desktop.item 
-								:href="route('docs.section.item', [$section, $item])"
-								:active="$item === $active_item"
-							>
-								{{ $item->title }}
-							</x-navigation.desktop.item>
-						@endforeach
-					</ul>
-				</li>
+					<li>
+						<x-navigation.desktop.section>
+							{{ $section->title }}
+						</x-navigation.desktop.section>
+						
+						<ul role="list" class="-mx-2 space-y-1">
+							@foreach($section->items as $item)
+								<x-navigation.desktop.item
+									:href="route('docs.section.item', [$section, $item])"
+									:active="$item === $active_item"
+								>
+									{{ $item->title }}
+								</x-navigation.desktop.item>
+							@endforeach
+						</ul>
+					</li>
 				
 				@endforeach
 				
