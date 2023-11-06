@@ -21,12 +21,16 @@ Route::get('/', function () {
 });
 
 Route::get('/docs/{section}/{item}', function(string $section, string $item) {
-	$section = app(Navigation::class)->section($section);
-	$item = $section->item($item);
-	
-	View::share('active_item', $item);
-	
-	return view('docs.page', [
-		'page' => $item->page()
-	]);
+	try {
+		$section = app(Navigation::class)->section($section);
+		$item = $section->item($item);
+		
+		View::share('active_item', $item);
+		
+		return view('docs.page', [
+			'page' => $item->page()
+		]);
+	} catch (Throwable) {
+		abort(404);
+	}
 })->name('docs.section.item');

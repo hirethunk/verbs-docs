@@ -1,3 +1,5 @@
+@props(['title' => null])
+
 <html lang="en" class="h-full">
 <head>
 	<meta charset="utf-8">
@@ -5,7 +7,7 @@
 	@vite('resources/css/app.css')
 	@vite('resources/js/app.js')
 	<title>
-		Verbs
+		{{ $title ? "$title - Verbs" : 'Verbs' }}
 	</title>
 </head>
 <body class="flex flex-col min-h-full bg-white antialiased dark:bg-zinc-900">
