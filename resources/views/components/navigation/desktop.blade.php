@@ -10,7 +10,10 @@
 		
 		<nav class="flex flex-1 flex-col">
 			
-			<ul role="list" class="flex flex-1 flex-col gap-y-7">
+			<ul 
+				role="list" 
+				class="flex flex-1 flex-col gap-y-7"
+			>
 				
 				@foreach($navigation->sections as $section)
 					
@@ -21,13 +24,24 @@
 						
 						<ul role="list" class="-mx-2 space-y-1">
 							@foreach($section->items as $item)
-								<x-navigation.item
-									:href="route('docs.section.item', array_filter([$section, $item, $item->sectionHash()]))"
-									:active="$item === $active_item"
-									:icon="$item->icon"
-								>
-									{{ $item->title }}
-								</x-navigation.item>
+								@if($item->sectionHash())
+									<x-navigation.item
+										:section="ltrim($item->sectionHash(), '#') ?: null"
+										:href="route('docs.section.item', [$section, $item, $item->sectionHash()])"
+										:active="$item === $active_item"
+										:icon="$item->icon"
+									>
+										{{ $item->title }}
+									</x-navigation.item>
+								@else
+									<x-navigation.item
+										:href="route('docs.section.item', [$section, $item])"
+										:active="$item === $active_item"
+										:icon="$item->icon"
+									>
+										{{ $item->title }}
+									</x-navigation.item>
+								@endif
 							@endforeach
 						</ul>
 					</li>

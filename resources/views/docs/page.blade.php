@@ -4,7 +4,7 @@
 		{{ $page->title }}
 	</h1>
 	
-	<article class="prose lg:prose-xl">
+	<article x-data class="prose lg:prose-xl">
 		{{ $page }}
 	</article>
 	

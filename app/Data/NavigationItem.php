@@ -26,7 +26,7 @@ class NavigationItem extends Data implements UrlRoutable
 	
 	public function sectionHash(): string
 	{
-		return $this->section ? "#content-{$this->section}" : '';
+		return $this->section ? str($this->section)->ltrim('#')->start('content-')->start('#') : '';
 	}
 	
 	public function getRouteKey()

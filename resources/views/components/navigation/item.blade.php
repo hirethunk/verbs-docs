@@ -2,10 +2,12 @@
 	'href', 
 	'active' => false,
 	'mobile' => false,
+	'section' => null,
 	'icon' => 'heroicon-o-document'
 ])
 <li>
 	<a
+		{{ $attributes }}
 		href="{{ $href }}"
 		@class([
 			'flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
