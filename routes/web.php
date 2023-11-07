@@ -20,6 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/__og-src/{section}/{item}', function(string $section, string $item) {
+	$section = app(Navigation::class)->section($section);
+	
+	return view('og-src', ['page' => $section->item($item)->page()]);
+});
+
 Route::get('/docs/{section}/{item}', function(string $section, string $item) {
 	try {
 		$section = app(Navigation::class)->section($section);
@@ -28,6 +35,8 @@ Route::get('/docs/{section}/{item}', function(string $section, string $item) {
 		View::share('active_item', $item);
 		
 		return view('docs.page', [
+			'section' => $section,
+			'item' => $item,
 			'page' => $item->page()
 		]);
 	} catch (Throwable) {

@@ -9,6 +9,7 @@
 	<title>
 		{{ $title ? "$title - Verbs" : 'Verbs' }}
 	</title>
+	{{ $meta ?? null }}
 </head>
 <body class="flex flex-col min-h-full bg-[#f8ecdb] antialiased dark:bg-zinc-900">
 
