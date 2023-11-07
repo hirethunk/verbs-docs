@@ -8,6 +8,7 @@ use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\Autolink\AutolinkExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\ExtensionInterface;
+use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Extension\Strikethrough\StrikethroughExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\Extension\TaskList\TaskListExtension;
@@ -30,6 +31,7 @@ class MarkdownConverter extends BaseConverter
 				$environment->addExtension(new TableExtension());
 				$environment->addExtension(new TaskListExtension());
 				$environment->addExtension(new TorchlightExtension());
+				$environment->addExtension(new HeadingPermalinkExtension());
 			}
 		});
 		
