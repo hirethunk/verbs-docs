@@ -49,7 +49,7 @@
 			
 			<div class="flex grow flex-col gap-y-5 overflow-y-auto bg-[#f8ecdb] px-6 pb-4">
 				
-				<div class="flex h-24 shrink-0 items-center justify-center">
+				<div class="flex h-24 shrink-0 items-center justify-center mt-6">
 					<a href="/">
 						<x-navigation.logo class="h-24 w-auto" />
 					</a>
@@ -66,13 +66,26 @@
 								
 								<ul role="list" class="-mx-2 space-y-1">
 									@foreach($section->items as $item)
-										<x-navigation.item
-											mobile
-											:href="route('docs.section.item', array_filter([$section, $item, $item->sectionHash()]))"
-											:active="$item === $active_item"
-										>
-											{{ $item->title }}
-										</x-navigation.item>
+										@if($item->sectionHash())
+											<x-navigation.item
+												mobile
+												:section="ltrim($item->sectionHash(), '#') ?: null"
+												:href="route('docs.section.item', [$section, $item, $item->sectionHash()])"
+												:active="$item === $active_item"
+												:icon="$item->icon"
+											>
+												{{ $item->title }}
+											</x-navigation.item>
+										@else
+											<x-navigation.item
+												mobile
+												:href="route('docs.section.item', [$section, $item])"
+												:active="$item === $active_item"
+												:icon="$item->icon"
+											>
+												{{ $item->title }}
+											</x-navigation.item>
+										@endif
 									@endforeach
 								</ul>
 							</li>

@@ -17,7 +17,7 @@
 	>
 		<x-icon 
 			:name="$icon"
-			@class(['w-5 h-5 flex-shrink-0', 'tranform transition-transform group-hover:translate-x-1' => ! $mobile])
+			@class(['w-5 h-5 flex-shrink-0', 'tranform transition-transform group-hover:translate-x-1 group-hover:-rotate-3' => ! $mobile])
 		/>
 		<span @class(['tranform transition-transform group-hover:translate-x-2' => ! $mobile])>
 			{{ $slot }}
