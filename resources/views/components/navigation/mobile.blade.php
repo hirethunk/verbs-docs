@@ -8,7 +8,7 @@
 	aria-modal="true"
 >
 	<div
-		class="fixed inset-0 bg-gray-900/80"
+		class="fixed inset-0 bg-stone-900/80"
 		x-show="open"
 		x-transition:enter="transition-opacity ease-linear duration-300"
 		x-transition:enter-start="opacity-0"
@@ -47,7 +47,7 @@
 				</button>
 			</div>
 			
-			<div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
+			<div class="flex grow flex-col gap-y-5 overflow-y-auto bg-[#f8ecdb] px-6 pb-4">
 				
 				<div class="flex h-24 shrink-0 items-center justify-center">
 					<a href="/">
@@ -60,18 +60,19 @@
 						
 						@foreach($navigation->sections as $section)
 							<li>
-								<x-navigation.mobile.section>
+								<x-navigation.section>
 									{{ $section->title }}
-								</x-navigation.mobile.section>
+								</x-navigation.section>
 								
 								<ul role="list" class="-mx-2 space-y-1">
 									@foreach($section->items as $item)
-										<x-navigation.mobile.item
-											:href="route('docs.section.item', [$section, $item])"
+										<x-navigation.item
+											mobile
+											:href="route('docs.section.item', array_filter([$section, $item, $item->sectionHash()]))"
 											:active="$item === $active_item"
 										>
 											{{ $item->title }}
-										</x-navigation.mobile.item>
+										</x-navigation.item>
 									@endforeach
 								</ul>
 							</li>

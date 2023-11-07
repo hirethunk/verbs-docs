@@ -7,7 +7,7 @@
 		@apply my-4 rounded overflow-x-auto;
 	}
 	
-	pre code.torchlight, 
+	pre code.torchlight,
 	.prose pre code.torchlight {
 		@apply block py-4 min-w-max;
 	}
@@ -22,5 +22,17 @@
 	.prose pre code.torchlight .line-number,
 	.prose pre code.torchlight .summary-caret {
 		@apply mr-4;
+	}
+	
+	.prose a.heading-permalink {
+		@apply sr-only;
+	}
+	
+	.prose a.heading-permalink:focus {
+		@apply mr-1 px-1 text-stone-300 text-sm -top-0.5 relative not-sr-only;
+	}
+	
+	.prose a.heading-permalink:hover {
+		@apply text-stone-500;
 	}
 }

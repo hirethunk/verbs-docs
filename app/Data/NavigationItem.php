@@ -13,6 +13,7 @@ class NavigationItem extends Data implements UrlRoutable
 	public function __construct(
 		public string $title,
 		public string $slug,
+		public ?string $section = null,
 		public string $icon = 'heroicon-o-document',
 	) {
 		$this->icon = str($this->icon)->start('heroicon-o-')->toString();
@@ -21,6 +22,11 @@ class NavigationItem extends Data implements UrlRoutable
 	public function page(): Page
 	{
 		return $this->page ??= new Page('main', "{$this->slug}.md", $this->title);
+	}
+	
+	public function sectionHash(): string
+	{
+		return $this->section ? "#content-{$this->section}" : '';
 	}
 	
 	public function getRouteKey()

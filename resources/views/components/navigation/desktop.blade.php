@@ -15,19 +15,19 @@
 				@foreach($navigation->sections as $section)
 					
 					<li>
-						<x-navigation.desktop.section>
+						<x-navigation.section>
 							{{ $section->title }}
-						</x-navigation.desktop.section>
+						</x-navigation.section>
 						
 						<ul role="list" class="-mx-2 space-y-1">
 							@foreach($section->items as $item)
-								<x-navigation.desktop.item
-									:href="route('docs.section.item', [$section, $item])"
+								<x-navigation.item
+									:href="route('docs.section.item', array_filter([$section, $item, $item->sectionHash()]))"
 									:active="$item === $active_item"
 									:icon="$item->icon"
 								>
 									{{ $item->title }}
-								</x-navigation.desktop.item>
+								</x-navigation.item>
 							@endforeach
 						</ul>
 					</li>

@@ -1,6 +1,7 @@
 @props([
 	'href', 
 	'active' => false,
+	'mobile' => false,
 	'icon' => 'heroicon-o-document'
 ])
 <li>
@@ -12,8 +13,11 @@
 			'group text-stone-800 hover:text-indigo-600 hover:bg-stone-50' => !$active,			
 		])
 	>
-		<x-icon :name="$icon" class="w-5 h-5 flex-shrink-0 tranform transition-transform group-hover:translate-x-1" />
-		<span class="tranform transition-transform group-hover:translate-x-2">
+		<x-icon 
+			:name="$icon"
+			@class(['w-5 h-5 flex-shrink-0', 'tranform transition-transform group-hover:translate-x-1' => ! $mobile])
+		/>
+		<span @class(['tranform transition-transform group-hover:translate-x-2' => ! $mobile])>
 			{{ $slot }}
 		</span>
 	</a>

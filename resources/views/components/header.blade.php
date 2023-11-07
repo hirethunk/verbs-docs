@@ -24,17 +24,17 @@
 				x-data
 				@click="alert('Coming soon!')"
 				type="button" 
-				class="bg-white rounded-full px-3 py-1 text-zinc-500 text-xs inline-flex items-center space-x-4 transition ring-1 ring-inset ring-black/[0.08] hover:ring-black/[0.20]"
+				class="bg-white flex-grow max-w-sm rounded-full px-3 py-1 text-zinc-500 text-xs inline-flex items-center space-x-4 transition ring-1 ring-inset ring-black/[0.08] hover:ring-black/[0.20]"
 			>
 				<svg class="pointer-events-none h-full w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 					<path fill-rule="evenodd"
 					      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
 					      clip-rule="evenodd" />
 				</svg>
-				<span>
+				<span class="flex-1 text-left">
 					Find in docs…
 				</span>
-				<kbd class="ml-auto text-2xs inline-flex text-zinc-400 dark:text-zinc-500">
+				<kbd class="ml-auto text-2xs inline-flex text-stone-400 dark:text-stone-500">
 					<kbd class="font-sans">⌘</kbd>
 					<kbd class="font-sans">K</kbd>
 				</kbd>
