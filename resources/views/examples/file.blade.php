@@ -10,7 +10,13 @@
 	</h1>
 	
 	<article>
-		<pre><x-torchlight-code language="php" :contents="$source" /></pre>
+		@if($source->comments)
+			<div class="prose lg:prose-xl">
+				{{ $source->comments }}
+			</div>
+		@endif
+		
+		<pre><x-torchlight-code language="php" :contents="$source->source" /></pre>
 		
 		<div class="text-right">
 			<a

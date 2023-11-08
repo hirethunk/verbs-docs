@@ -4,8 +4,6 @@ namespace App\Data;
 
 use Illuminate\Contracts\Routing\UrlRoutable;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\HtmlString;
-use Illuminate\Support\Str;
 use RuntimeException;
 use Spatie\LaravelData\Data;
 
@@ -15,7 +13,7 @@ class NavigationItem extends Data implements UrlRoutable
 	
 	protected ?Page $page = null;
 	
-	protected ?string $source = null;
+	protected ?Source $source = null;
 	
 	public function __construct(
 		public string $title,
@@ -32,7 +30,9 @@ class NavigationItem extends Data implements UrlRoutable
 	
 	public function url(): ?string
 	{
-		return $this->url ? url($this->url) : null;
+		return $this->url
+			? url($this->url)
+			: null;
 	}
 	
 	public function page(): Page
@@ -40,11 +40,19 @@ class NavigationItem extends Data implements UrlRoutable
 		return $this->page ??= new Page('main', $this->path, $this->title);
 	}
 	
-	public function source(): string
+	public function source(): Source
 	{
-		return $this->source ??= File::get(
-			storage_path("docs/main/examples/{$this->parent->parent->namespace}/{$this->path}")
-		);
+		return $this->source ??= value(function() {
+			$raw = File::get(storage_path("docs/main/examples/{$this->parent->parent->namespace}/{$this->path}"));
+			
+			$pattern = '/(<\?php)((?:\s*namespace[^;]+;\s*)*(?:\s*use[^;]+;\s*)*)(?:\s*\/\*\*\s*(.*)\s+\*\/)?(.*)/ism';
+			preg_match($pattern, $raw, $matches);
+			
+			$source = $matches[1]." // [tl! collapse:start]\n".trim($matches[2], "\n")." // [tl! collapse:end]\n\n".$matches[4];
+			$comments = $matches[3];
+			
+			return new Source($source, $comments);
+		});
 	}
 	
 	public function sectionHash(): string
