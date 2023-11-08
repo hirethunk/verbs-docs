@@ -24,7 +24,7 @@ for v in "${DOCS_VERSIONS[@]}"; do
   fi
   
   echo "Cloning $v..."
-  git clone --quiet --single-branch --branch "$v" https://github.com/hirethunk/verbs "storage/docs/_tmp"
+  git clone --quiet --single-branch --branch "$v" git@github.com:hirethunk/verbs.git "storage/docs/_tmp"
   
   if [ -d "storage/docs/$v" ]; then
     echo "Removing previous copy of $v..."
