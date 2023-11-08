@@ -110,6 +110,7 @@ Route::get('/examples/{example}/{section}/{item}', function(string $example, str
 		View::share('active_sub_item', $item);
 		
 		return view('examples.file', [
+			'item' => $item,
 			'section' => $section->title,
 			'title' => $item->title,
 			'source' => $item->source(),
