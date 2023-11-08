@@ -3,6 +3,7 @@
 namespace App\Data;
 
 use Illuminate\Contracts\Routing\UrlRoutable;
+use Illuminate\Support\Str;
 use RuntimeException;
 use Spatie\LaravelData\Data;
 
@@ -12,21 +13,26 @@ class NavigationItem extends Data implements UrlRoutable
 	
 	public function __construct(
 		public string $title,
-		public string $slug,
+		public ?string $slug = null,
+		public ?string $path = null,
 		public ?string $section = null,
 		public string $icon = 'heroicon-o-document',
 	) {
+		$this->slug ??= str($this->title)->slug()->toString();
+		$this->path ??= "{$this->slug}.md";
 		$this->icon = str($this->icon)->start('heroicon-o-')->toString();
 	}
 	
 	public function page(): Page
 	{
-		return $this->page ??= new Page('main', "{$this->slug}.md", $this->title);
+		return $this->page ??= new Page('main', $this->path, $this->title);
 	}
 	
 	public function sectionHash(): string
 	{
-		return $this->section ? str($this->section)->ltrim('#')->start('content-')->start('#') : '';
+		return $this->section
+			? str($this->section)->ltrim('#')->start('content-')->start('#')
+			: '';
 	}
 	
 	public function getRouteKey()

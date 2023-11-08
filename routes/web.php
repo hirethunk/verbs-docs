@@ -43,3 +43,20 @@ Route::get('/docs/{section}/{item}', function(string $section, string $item) {
 		abort(404);
 	}
 })->name('docs.section.item');
+
+Route::get('/examples/{example}/{file}', function(string $example, string $file) {
+	try {
+		$section = app(Navigation::class)->section($section);
+		$item = $section->item($item);
+		
+		View::share('active_item', $item);
+		
+		return view('docs.page', [
+			'section' => $section,
+			'item' => $item,
+			'page' => $item->page()
+		]);
+	} catch (Throwable) {
+		abort(404);
+	}
+})->name('examples.section.item');

@@ -3,30 +3,37 @@
 namespace App\Data;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
-use Throwable;
 
 class Navigation extends Data
 {
 	/** @var DataCollection<int, \App\Data\NavigationSection> */
-	public DataCollection $sections;
+	protected ?DataCollection $sections = null;
 	
-	public function __construct(Filesystem $fs)
-	{
-		try {
-			$path = storage_path('docs/main/docs/navigation.json');
-			$data = $fs->json($path);
-		} catch (FileNotFoundException) {
-			$data = [];
-		}
-		
-		$this->sections = NavigationSection::collection($data);
+	public function __construct(
+		protected string $path = 'docs/main/docs/navigation.json'
+	) {
 	}
 	
 	public function section(string $slug): ?NavigationSection
 	{
-		return $this->sections->first(fn(NavigationSection $section) => $section->slug === $slug);
+		return $this->sections()->first(fn(NavigationSection $section) => $section->slug === $slug);
+	}
+	
+	public function sections(): DataCollection
+	{
+		return $this->sections ??= NavigationSection::collection($this->data());
+	}
+	
+	protected function data(): array
+	{
+		try {
+			$path = storage_path($this->path);
+			return File::json($path);
+		} catch (FileNotFoundException) {
+			return [];
+		}
 	}
 }

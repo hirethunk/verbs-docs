@@ -58,7 +58,7 @@
 				<nav class="flex flex-1 flex-col">
 					<ul role="list" class="flex flex-1 flex-col gap-y-7">
 						
-						@foreach($navigation->sections as $section)
+						@foreach($navigation->sections() as $section)
 							<li>
 								<x-navigation.section>
 									{{ $section->title }}
