@@ -16,7 +16,7 @@ class Navigation extends Data
 	public function __construct(Filesystem $fs)
 	{
 		try {
-			$path = storage_path('docs/main/navigation.json');
+			$path = storage_path('docs/main/docs/navigation.json');
 			$data = $fs->json($path);
 		} catch (FileNotFoundException) {
 			$data = [];

@@ -32,7 +32,9 @@ for v in "${DOCS_VERSIONS[@]}"; do
   fi
   
   echo "Copying $v docs..."
-  mv -f "storage/docs/_tmp/docs" "storage/docs/$v"
+  mkdir -p "storage/docs/$v"
+  mv -f "storage/docs/_tmp/docs" "storage/docs/$v/docs"
+  mv -f "storage/docs/_tmp/examples" "storage/docs/$v/examples"
   
   echo "Removing temp files..."
   rm -rf storage/docs/_tmp
