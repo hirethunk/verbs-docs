@@ -24,15 +24,34 @@
 						
 						<ul role="list" class="-mx-2 space-y-1">
 							@foreach($section->items as $item)
-								@if($item->sectionHash())
-									<x-navigation.item
-										:section="ltrim($item->sectionHash(), '#') ?: null"
-										:href="$item->url() ?? route('docs.section.item', [$section, $item, $item->sectionHash()])"
-										:active="$item === $active_item"
-										:icon="$item->icon"
-									>
-										{{ $item->title }}
-									</x-navigation.item>
+								@if($item === $active_item && isset($sub_navigation))
+									<div class="bg-stone-50 rounded pb-2">
+										
+										<x-navigation.item
+											:href="$item->url() ?? route('docs.section.item', [$section, $item])"
+											:icon="$item->icon"
+											:active="true"
+										>
+											{{ $item->title }}
+										</x-navigation.item>
+										
+										<div class="ml-4 p-2 border-l border-l-indigo-100">
+											@foreach($sub_navigation->sections as $sub_section)
+												<x-navigation.section>
+													{{ $sub_section->title }}
+												</x-navigation.section>
+												@foreach($sub_section->items as $sub_item)
+													<x-navigation.item
+														:href="route('examples.section.item', [$sub_navigation->prefix, $sub_section, $sub_item])"
+														:icon="$sub_item->icon"
+														:active="$sub_item === $active_sub_item"
+													>
+														{{ $sub_item->title }}
+													</x-navigation.item>
+												@endforeach
+											@endforeach
+										</div>
+									</div>
 								@else
 									<x-navigation.item
 										:href="$item->url() ?? route('docs.section.item', [$section, $item])"
@@ -41,26 +60,6 @@
 									>
 										{{ $item->title }}
 									</x-navigation.item>
-									
-									@if(str(url()->current())->startsWith($item->url()) && isset($example_navigation))
-										<div class="bg-white bg-opacity-20 rounded p-2">
-											@foreach($example_navigation->sections() as $example_section)
-												<x-navigation.section>
-													{{ $example_section->title }}
-												</x-navigation.section>
-												
-												@foreach($example_section->items as $example_item)
-													<x-navigation.item
-														:href="route('examples.section.item', [$section, $example_item])"
-														:active="$example_item === $active_item"
-														:icon="$example_item->icon"
-													>
-														{{ $example_item->title }}
-													</x-navigation.item>
-												@endforeach
-											@endforeach
-										</div>
-									@endif
 								@endif
 							@endforeach
 						</ul>

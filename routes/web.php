@@ -1,10 +1,13 @@
 <?php
 
 use App\Data\Navigation;
+use App\Data\NavigationItem;
+use App\Data\NavigationSection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use Spatie\LaravelData\DataCollection;
 
 // Custom Pages / Routes
 // ------------------------------------------------------------------------------------------
@@ -90,12 +93,21 @@ Route::get('/examples/{example}/{section}', function(string $example, string $se
 });
 
 Route::get('/examples/{example}/{section}/{item}', function(string $example, string $section, string $item) {
+	
 	try {
 		$navigation = Navigation::example($example);
 		$section = $navigation->section($section);
 		$item = $section->item($item);
 		
-		// View::share('example_navigation', $navigation);
+		$docs_item = Navigation::docs()->sections->toCollection()
+			->pluck('items')
+			->map(fn(DataCollection $items) => $items->toCollection())
+			->flatten()
+			->first(fn(NavigationItem $item) => $item->url() === url("/examples/{$example}"));
+		
+		View::share('active_item', $docs_item);
+		View::share('sub_navigation', $navigation);
+		View::share('active_sub_item', $item);
 		
 		return view('examples.file', [
 			'section' => $section->title,

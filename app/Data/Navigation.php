@@ -2,7 +2,6 @@
 
 namespace App\Data;
 
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
 use Spatie\LaravelData\Data;
@@ -27,7 +26,7 @@ class Navigation extends Data
 			
 			app()->instance($key, new static(
 				path: "docs/main/examples/{$namespace}/navigation.json",
-				prefix: "examples/{$example}",
+				prefix: $example,
 				namespace: $namespace,
 			));
 		}
