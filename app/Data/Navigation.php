@@ -28,6 +28,7 @@ class Navigation extends Data
 			app()->instance($key, new static(
 				path: "docs/main/examples/{$namespace}/navigation.json",
 				prefix: "examples/{$example}",
+				namespace: $namespace,
 			));
 		}
 		
@@ -37,6 +38,7 @@ class Navigation extends Data
 	public function __construct(
 		protected string $path,
 		public string $prefix,
+		public ?string $namespace = null,
 	) {
 		$this->sections = NavigationSection::collection(File::json(storage_path($this->path)))
 			->each(fn(NavigationSection $section) => $section->parent = $this);

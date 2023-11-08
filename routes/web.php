@@ -95,14 +95,12 @@ Route::get('/examples/{example}/{section}/{item}', function(string $example, str
 		$section = $navigation->section($section);
 		$item = $section->item($item);
 		
-		dd($item);
-		
 		// View::share('example_navigation', $navigation);
 		
 		return view('examples.file', [
 			'section' => $section->title,
 			'title' => $item->title,
-			'source' => File::get($path),
+			'source' => $item->source(),
 		]);
 		
 	} catch (Throwable) {

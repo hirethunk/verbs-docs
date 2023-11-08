@@ -3,6 +3,7 @@
 namespace App\Data;
 
 use Illuminate\Contracts\Routing\UrlRoutable;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use RuntimeException;
@@ -13,6 +14,8 @@ class NavigationItem extends Data implements UrlRoutable
 	public NavigationSection $parent;
 	
 	protected ?Page $page = null;
+	
+	protected ?string $source = null;
 	
 	public function __construct(
 		public string $title,
@@ -35,6 +38,13 @@ class NavigationItem extends Data implements UrlRoutable
 	public function page(): Page
 	{
 		return $this->page ??= new Page('main', $this->path, $this->title);
+	}
+	
+	public function source(): string
+	{
+		return $this->source ??= File::get(
+			storage_path("docs/main/examples/{$this->parent->parent->namespace}/{$this->path}")
+		);
 	}
 	
 	public function sectionHash(): string
