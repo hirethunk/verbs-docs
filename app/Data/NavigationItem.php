@@ -3,12 +3,15 @@
 namespace App\Data;
 
 use Illuminate\Contracts\Routing\UrlRoutable;
+use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use RuntimeException;
 use Spatie\LaravelData\Data;
 
 class NavigationItem extends Data implements UrlRoutable
 {
+	public NavigationSection $parent;
+	
 	protected ?Page $page = null;
 	
 	public function __construct(
@@ -16,11 +19,17 @@ class NavigationItem extends Data implements UrlRoutable
 		public ?string $slug = null,
 		public ?string $path = null,
 		public ?string $section = null,
+		public ?string $url = null,
 		public string $icon = 'heroicon-o-document',
 	) {
 		$this->slug ??= str($this->title)->slug()->toString();
 		$this->path ??= "{$this->slug}.md";
 		$this->icon = str($this->icon)->start('heroicon-o-')->toString();
+	}
+	
+	public function url(): ?string
+	{
+		return $this->url ? url($this->url) : null;
 	}
 	
 	public function page(): Page

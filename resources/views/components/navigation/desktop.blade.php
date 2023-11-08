@@ -10,12 +10,12 @@
 		
 		<nav class="flex flex-1 flex-col">
 			
-			<ul 
-				role="list" 
+			<ul
+				role="list"
 				class="flex flex-1 flex-col gap-y-7"
 			>
 				
-				@foreach($navigation->sections() as $section)
+				@foreach($navigation->sections as $section)
 					
 					<li>
 						<x-navigation.section>
@@ -27,7 +27,7 @@
 								@if($item->sectionHash())
 									<x-navigation.item
 										:section="ltrim($item->sectionHash(), '#') ?: null"
-										:href="route('docs.section.item', [$section, $item, $item->sectionHash()])"
+										:href="$item->url() ?? route('docs.section.item', [$section, $item, $item->sectionHash()])"
 										:active="$item === $active_item"
 										:icon="$item->icon"
 									>
@@ -35,12 +35,32 @@
 									</x-navigation.item>
 								@else
 									<x-navigation.item
-										:href="route('docs.section.item', [$section, $item])"
+										:href="$item->url() ?? route('docs.section.item', [$section, $item])"
 										:active="$item === $active_item"
 										:icon="$item->icon"
 									>
 										{{ $item->title }}
 									</x-navigation.item>
+									
+									@if(str(url()->current())->startsWith($item->url()) && isset($example_navigation))
+										<div class="bg-white bg-opacity-20 rounded p-2">
+											@foreach($example_navigation->sections() as $example_section)
+												<x-navigation.section>
+													{{ $example_section->title }}
+												</x-navigation.section>
+												
+												@foreach($example_section->items as $example_item)
+													<x-navigation.item
+														:href="route('examples.section.item', [$section, $example_item])"
+														:active="$example_item === $active_item"
+														:icon="$example_item->icon"
+													>
+														{{ $example_item->title }}
+													</x-navigation.item>
+												@endforeach
+											@endforeach
+										</div>
+									@endif
 								@endif
 							@endforeach
 						</ul>

@@ -58,7 +58,7 @@
 				<nav class="flex flex-1 flex-col">
 					<ul role="list" class="flex flex-1 flex-col gap-y-7">
 						
-						@foreach($navigation->sections() as $section)
+						@foreach($navigation->sections as $section)
 							<li>
 								<x-navigation.section>
 									{{ $section->title }}
@@ -70,8 +70,8 @@
 											<x-navigation.item
 												mobile
 												:section="ltrim($item->sectionHash(), '#') ?: null"
-												:href="route('docs.section.item', [$section, $item, $item->sectionHash()])"
-												:active="$item === $active_item"
+												:href="$item->url() ?? route('docs.section.item', [$section, $item, $item->sectionHash()])"
+												:active="$item->url() ? str(url()->current())->startsWith($item->url()) : $item === $active_item"
 												:icon="$item->icon"
 											>
 												{{ $item->title }}
@@ -79,8 +79,8 @@
 										@else
 											<x-navigation.item
 												mobile
-												:href="route('docs.section.item', [$section, $item])"
-												:active="$item === $active_item"
+												:href="$item->url() ?? route('docs.section.item', [$section, $item])"
+												:active="$item->url() ? str(url()->current())->startsWith($item->url()) : $item === $active_item"
 												:icon="$item->icon"
 											>
 												{{ $item->title }}
