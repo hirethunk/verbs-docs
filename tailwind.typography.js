@@ -2,47 +2,50 @@ module.exports = function typographyStyles({ theme }) {
   return {
     DEFAULT: {
       css: {
-        '--tw-prose-body': theme('colors.zinc.700'),
-        '--tw-prose-headings': theme('colors.zinc.900'),
+        ...theme.DEFAULT,
+        
+        '--tw-prose-body': theme('colors.stone.700'),
+        '--tw-prose-headings': theme('colors.stone.900'),
         '--tw-prose-links': theme('colors.emerald.500'),
         '--tw-prose-links-hover': theme('colors.emerald.600'),
         '--tw-prose-links-underline': theme('colors.emerald.500 / 0.3'),
-        '--tw-prose-bold': theme('colors.zinc.900'),
-        '--tw-prose-counters': theme('colors.zinc.500'),
-        '--tw-prose-bullets': theme('colors.zinc.300'),
-        '--tw-prose-hr': theme('colors.zinc.900 / 0.05'),
-        '--tw-prose-quotes': theme('colors.zinc.900'),
-        '--tw-prose-quote-borders': theme('colors.zinc.200'),
-        '--tw-prose-captions': theme('colors.zinc.500'),
-        '--tw-prose-code': theme('colors.zinc.900'),
-        '--tw-prose-code-bg': theme('colors.zinc.100'),
-        '--tw-prose-code-ring': theme('colors.zinc.300'),
-        '--tw-prose-th-borders': theme('colors.zinc.300'),
-        '--tw-prose-td-borders': theme('colors.zinc.200'),
+        '--tw-prose-bold': theme('colors.stone.900'),
+        '--tw-prose-counters': theme('colors.stone.500'),
+        '--tw-prose-bullets': theme('colors.stone.300'),
+        '--tw-prose-hr': theme('colors.stone.900 / 0.05'),
+        '--tw-prose-quotes': theme('colors.stone.900'),
+        '--tw-prose-quote-borders': theme('colors.stone.200'),
+        '--tw-prose-captions': theme('colors.stone.500'),
+        '--tw-prose-code': theme('colors.stone.900'),
+        '--tw-prose-code-bg': theme('colors.stone.100'),
+        '--tw-prose-code-ring': theme('colors.stone.300'),
+        '--tw-prose-th-borders': theme('colors.stone.300'),
+        '--tw-prose-td-borders': theme('colors.stone.200'),
 
-        '--tw-prose-invert-body': theme('colors.zinc.400'),
-        '--tw-prose-invert-headings': theme('colors.white'),
-        '--tw-prose-invert-links': theme('colors.emerald.400'),
-        '--tw-prose-invert-links-hover': theme('colors.emerald.500'),
-        '--tw-prose-invert-links-underline': theme('colors.emerald.500 / 0.3'),
-        '--tw-prose-invert-bold': theme('colors.white'),
-        '--tw-prose-invert-counters': theme('colors.zinc.400'),
-        '--tw-prose-invert-bullets': theme('colors.zinc.600'),
-        '--tw-prose-invert-hr': theme('colors.white / 0.05'),
-        '--tw-prose-invert-quotes': theme('colors.zinc.100'),
-        '--tw-prose-invert-quote-borders': theme('colors.zinc.700'),
-        '--tw-prose-invert-captions': theme('colors.zinc.400'),
-        '--tw-prose-invert-code': theme('colors.white'),
-        '--tw-prose-invert-code-bg': theme('colors.zinc.700 / 0.15'),
-        '--tw-prose-invert-code-ring': theme('colors.white / 0.1'),
-        '--tw-prose-invert-th-borders': theme('colors.zinc.600'),
-        '--tw-prose-invert-td-borders': theme('colors.zinc.700'),
+        // '--tw-prose-invert-body': theme('colors.stone.400'),
+        // '--tw-prose-invert-headings': theme('colors.white'),
+        // '--tw-prose-invert-links': theme('colors.emerald.400'),
+        // '--tw-prose-invert-links-hover': theme('colors.emerald.500'),
+        // '--tw-prose-invert-links-underline': theme('colors.emerald.500 / 0.3'),
+        // '--tw-prose-invert-bold': theme('colors.white'),
+        // '--tw-prose-invert-counters': theme('colors.stone.400'),
+        // '--tw-prose-invert-bullets': theme('colors.stone.600'),
+        // '--tw-prose-invert-hr': theme('colors.white / 0.05'),
+        // '--tw-prose-invert-quotes': theme('colors.stone.100'),
+        // '--tw-prose-invert-quote-borders': theme('colors.stone.700'),
+        // '--tw-prose-invert-captions': theme('colors.stone.400'),
+        // '--tw-prose-invert-code': theme('colors.white'),
+        // '--tw-prose-invert-code-bg': theme('colors.stone.700 / 0.15'),
+        // '--tw-prose-invert-code-ring': theme('colors.white / 0.1'),
+        // '--tw-prose-invert-th-borders': theme('colors.stone.600'),
+        // '--tw-prose-invert-td-borders': theme('colors.stone.700'),
 
         // Base
         color: 'var(--tw-prose-body)',
-        fontSize: theme('fontSize.sm')[0],
+        fontSize: theme('fontSize.base')[0],
         lineHeight: theme('lineHeight.7'),
 
+        /* */
         // Text
         p: {
           marginTop: theme('spacing.6'),
@@ -60,33 +63,33 @@ module.exports = function typographyStyles({ theme }) {
           marginBottom: theme('spacing.5'),
           paddingLeft: '1.625rem',
         },
-        'ol[type="A"]': {
-          listStyleType: 'upper-alpha',
-        },
-        'ol[type="a"]': {
-          listStyleType: 'lower-alpha',
-        },
-        'ol[type="A" s]': {
-          listStyleType: 'upper-alpha',
-        },
-        'ol[type="a" s]': {
-          listStyleType: 'lower-alpha',
-        },
-        'ol[type="I"]': {
-          listStyleType: 'upper-roman',
-        },
-        'ol[type="i"]': {
-          listStyleType: 'lower-roman',
-        },
-        'ol[type="I" s]': {
-          listStyleType: 'upper-roman',
-        },
-        'ol[type="i" s]': {
-          listStyleType: 'lower-roman',
-        },
-        'ol[type="1"]': {
-          listStyleType: 'decimal',
-        },
+        // 'ol[type="A"]': {
+        //   listStyleType: 'upper-alpha',
+        // },
+        // 'ol[type="a"]': {
+        //   listStyleType: 'lower-alpha',
+        // },
+        // 'ol[type="A" s]': {
+        //   listStyleType: 'upper-alpha',
+        // },
+        // 'ol[type="a" s]': {
+        //   listStyleType: 'lower-alpha',
+        // },
+        // 'ol[type="I"]': {
+        //   listStyleType: 'upper-roman',
+        // },
+        // 'ol[type="i"]': {
+        //   listStyleType: 'lower-roman',
+        // },
+        // 'ol[type="I" s]': {
+        //   listStyleType: 'upper-roman',
+        // },
+        // 'ol[type="i" s]': {
+        //   listStyleType: 'lower-roman',
+        // },
+        // 'ol[type="1"]': {
+        //   listStyleType: 'decimal',
+        // },
         ul: {
           listStyleType: 'disc',
           marginTop: theme('spacing.5'),
@@ -320,6 +323,7 @@ module.exports = function typographyStyles({ theme }) {
         '> :last-child': {
           marginBottom: '0 !important',
         },
+        /* */
       },
     },
     invert: {

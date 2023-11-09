@@ -1,4 +1,3 @@
-const typographyStyles = require('./tailwind.typography.js')
 const typographyPlugin = require('@tailwindcss/typography')
 
 /** @type {import('tailwindcss').Config} */
@@ -9,6 +8,9 @@ module.exports = {
     "./docs/**/*.md",
   ],
   darkMode: 'class',
+  safelist: [
+    { pattern: /torchlight/i }
+  ],
   theme: {
     fontSize: {
       '2xs': ['0.75rem', { lineHeight: '1.25rem' }],
@@ -26,8 +28,22 @@ module.exports = {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
     },
-    typography: typographyStyles,
     extend: {
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-links': theme('colors.emerald[500]'),
+            ':not(pre) code': {
+              backgroundColor: theme('colors.slate[100]'),
+              display: 'inline-block',
+              paddingTop: theme('padding[0]'),
+              paddingRight: theme('padding[1]'),
+              paddingBottom: theme('padding[0]'),
+              paddingLeft: theme('padding[1]'),
+            },
+          },
+        },
+      }),
       boxShadow: {
         glow: '0 0 4px rgb(0 0 0 / 0.1)',
       },

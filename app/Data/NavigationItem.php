@@ -42,17 +42,7 @@ class NavigationItem extends Data implements UrlRoutable
 	
 	public function source(): Source
 	{
-		return $this->source ??= value(function() {
-			$raw = File::get(storage_path("docs/main/examples/{$this->parent->parent->namespace}/{$this->path}"));
-			
-			$pattern = '/(<\?php)((?:\s*namespace[^;]+;\s*)*(?:\s*use[^;]+;\s*)*)(?:\s*\/\*\*\s*(.*)\s+\*\/)?(.*)/ism';
-			preg_match($pattern, $raw, $matches);
-			
-			$source = $matches[1]." // [tl! collapse:start]\n".trim($matches[2], "\n")." // [tl! collapse:end]\n\n".$matches[4];
-			$comments = $matches[3];
-			
-			return new Source($source, $comments);
-		});
+		return $this->source ??= new Source("docs/main/examples/{$this->parent->parent->namespace}/{$this->path}");
 	}
 	
 	public function sectionHash(): string
