@@ -17,6 +17,10 @@
 		{{-- Separator --}}
 		<div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true"></div>
 		
+		<a href="/" class="flex-shrink-0 lg:hidden">
+			<x-navigation.logo class="h-8 w-auto" />
+		</a>
+		
 		{{-- Top Menu --}}
 		<div class="flex flex-1 gap-x-4 self-stretch items-center lg:gap-x-6 lg:pl-8">
 			
@@ -31,7 +35,7 @@
 					      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
 					      clip-rule="evenodd" />
 				</svg>
-				<span class="flex-1 text-left">
+				<span class="flex-1 text-left truncate">
 					Find in docs…
 				</span>
 				<kbd class="ml-auto text-2xs inline-flex text-stone-400 dark:text-stone-500">

@@ -19,7 +19,7 @@
 		<div class="my-10">
 			<pre><x-torchlight-code language="php" :contents="$source->code" /></pre>
 			
-			<div class="text-right">
+			<div class="text-center lg:text-right">
 				<a
 					href="https://github.com/hirethunk/verbs/blob/main/examples/{{ $item->parent->parent->namespace }}/{{ $item->path }}"
 					class="group text-stone-500 hover:text-stone-700 inline-flex items-center gap-1"
