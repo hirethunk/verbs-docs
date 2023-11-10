@@ -30,23 +30,6 @@
 	.prose pre code.torchlight .summary-caret {
 		@apply mr-4;
 	}
-	
-	.prose a.heading-permalink {
-		@apply text-slate-300 mr-1 relative -top-0.5 no-underline text-lg;
-	}
-	
-	.prose a.heading-permalink:hover {
-		@apply text-stone-500;
-	}
-	
-	/* Adjust permalinks by approx 26 units */
-	.prose a.heading-permalink:before {
-         display: block;
-         content: " ";
-         height: 130px;
-         margin-top: -130px;
-         visibility: hidden;
-     }
 }
 
 @layer utilities {

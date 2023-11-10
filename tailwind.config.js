@@ -4,6 +4,7 @@ const typographyPlugin = require('@tailwindcss/typography')
 module.exports = {
   content: [
     "./resources/**/*.blade.php",
+    "./app/MarkdownConverter.php",
     "./resources/**/*.js",
     "./docs/**/*.md",
   ],

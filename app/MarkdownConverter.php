@@ -5,23 +5,21 @@ namespace App;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
-use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
-use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
 use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
-use League\CommonMark\Extension\HeadingPermalink\HeadingPermalink;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\MarkdownConverter as BaseConverter;
-use League\CommonMark\Node\Node;
-use League\CommonMark\Renderer\ChildNodeRendererInterface;
-use League\CommonMark\Renderer\NodeRendererInterface;
-use League\CommonMark\Util\HtmlElement;
 use Torchlight\Commonmark\V2\TorchlightExtension;
 
 class MarkdownConverter extends BaseConverter
 {
 	public function __construct(array $config = [])
 	{
+		$config['heading_permalink'] = [
+			'html_class' => 'heading-permalink text-slate-300 mr-1 relative -top-0.5 no-underline text-lg scroll-mt-24 hover:text-stone-500',
+			'symbol' => '#',
+		];
+		
 		$environment = new Environment($config);
 		
 		$environment->addExtension(new FrontMatterExtension());
