@@ -42,7 +42,7 @@
 		<aside
 			x-data="onThisPage"
 			x-on:scroll.window.throttle.50ms="onScroll()"
-			x-show="headings.length > 0"
+			x-show="headings.length > 1"
 			class="hidden top-16 w-64 h-screen sticky overflow-y-auto py-8 pl-6 lg:block"
 		>
 			<h4 class="mb-2 block text-sm font-bold uppercase text-slate-300">
