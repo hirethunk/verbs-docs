@@ -30,7 +30,7 @@
 	</x-slot:meta>
 	
 	<div class="flex">
-		<article x-data class="prose max-w-none w-full docsearch-content">
+		<article x-data class="prose max-w-none flex-shrink overflow-x-auto docsearch-content">
 			
 			<h1>
 				{{ $page->title }}
@@ -43,7 +43,7 @@
 			x-data="onThisPage"
 			x-on:scroll.window.throttle.50ms="onScroll()"
 			x-show="headings.length > 1"
-			class="hidden top-16 -mt-10 w-64 h-full sticky overflow-y-auto py-8 pl-6 lg:block"
+			class="hidden top-16 -mt-10 w-64 flex-shrink-0 h-full sticky overflow-y-auto py-8 pl-6 lg:block"
 		>
 			<h4 class="mb-2 block text-sm font-bold uppercase text-slate-300">
 				On this page
