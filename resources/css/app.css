@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Heading Styles */
 @layer components {
 	.prose p, .prose ul, .prose ol, .prose h1, .prose h2, .prose h3 {
 		@apply max-w-4xl;
@@ -9,6 +10,7 @@
 	}
 }
 
+/* Torchlight Styles */
 @layer components {
 	pre, .prose pre {
 		@apply my-4 rounded overflow-x-auto;
@@ -30,9 +32,7 @@
 	.prose pre code.torchlight .summary-caret {
 		@apply mr-4;
 	}
-}
-
-@layer utilities {
+	
 	.torchlight summary:focus {
 		outline: none;
 	}
@@ -69,5 +69,178 @@
 	.torchlight details:not([open]) .summary-hide-when-open {
 		display: initial;
 		@apply bg-slate-700 rounded text-slate-300 !important;
+	}
+}
+
+/* DocSearch Styles */
+@layer components {
+	.DocSearch-Button {
+		@apply bg-white flex w-full rounded-full px-3 py-1 text-zinc-500 text-xs items-center space-x-4 transition ring-1 ring-inset ring-black/[0.08] hover:ring-black/[0.20];
+	}
+	
+	.DocSearch-Button-Container {
+		@apply flex-1 flex items-center;
+	}
+	
+	.DocSearch-Search-Icon {
+		@apply pointer-events-none h-full w-4 text-gray-400 mr-2;
+	}
+	
+	.DocSearch-Button-Placeholder {
+		@apply flex-1 text-left truncate
+	}
+	
+	.DocSearch-Button-Keys {
+		@apply ml-auto text-xs inline-flex space-x-0.5 text-stone-400 dark:text-stone-500;
+	}
+	
+	.DocSearch-Button-Keys kbd {
+		@apply font-sans;
+	}
+	
+	.DocSearch-Container {
+		@apply fixed inset-0 z-50 w-screen overflow-y-auto p-4 sm:p-6 md:p-20;
+		@apply bg-gray-500 bg-opacity-50 transition-opacity;
+	}
+	
+	.DocSearch-Modal {
+		@apply mx-auto max-w-xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all;
+	}
+	
+	.DocSearch-Form {
+		@apply relative m-0 border-0;
+	}
+	
+	.DocSearch-MagnifierLabel {
+		@apply pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400;
+	}
+	
+	.DocSearch-LoadingIndicator {
+		@apply hidden;
+	}
+	
+	.DocSearch-Reset {
+		@apply absolute right-4 top-3.5 h-5 w-5 text-gray-400;
+	}
+	
+	.DocSearch-Input {
+		@apply h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 rounded-xl placeholder:text-gray-400 sm:text-sm;
+		@apply ring-0 border-0 outline-0 !important;
+	}
+	
+	.DocSearch-Input::-ms-clear {
+		display: none;
+	}
+	
+	/* clears the ‘X’ from Internet Explorer */
+	.DocSearch-Input::-ms-clear, .DocSearch-Input::-ms-reveal {
+		@apply hidden w-0 h-0;
+	}
+	
+	.DocSearch-Input::-webkit-search-decoration,
+	.DocSearch-Input::-webkit-search-cancel-button,
+	.DocSearch-Input::-webkit-search-results-button,
+	.DocSearch-Input::-webkit-search-results-decoration {
+		@apply hidden;
+	}
+	
+	.DocSearch-Cancel {
+		@apply sr-only;
+	}
+	
+	.DocSearch-Dropdown {
+		@apply max-h-80 transform-gpu scroll-py-10 scroll-pb-2 space-y-4 overflow-y-auto p-4 pb-2 border-0;
+	}
+	
+	.DocSearch-Hit[aria-selected=true] {
+		@apply bg-indigo-600 text-white;
+	}
+	
+	.DocSearch-Hit-source {
+		@apply text-xs font-semibold text-gray-900;
+	}
+	
+	.DocSearch-Hits ul {
+		@apply -mx-4 mt-2 text-sm text-gray-700;
+	}
+	
+	.DocSearch-Hit-icon {
+		@apply mr-3;
+	}
+	
+	.DocSearch-Hit-Container {
+		@apply flex cursor-default select-none items-center px-4 py-2;
+	}
+	
+	.DocSearch-Hit-content-wrapper {
+		@apply flex-1;
+	}
+	
+	.DocSearch-Hit-title {
+		@apply flex-auto truncate;
+	}
+	
+	.DocSearch-Hit-title mark {
+		@apply bg-opacity-50 bg-yellow-200;
+	}
+	
+	.DocSearch-Hit-action {
+		@apply ml-auto;
+	}
+	
+	.DocSearch-StartScreen {
+		@apply text-center py-6;
+	}
+	
+	.DocSearch-NoResults {
+		@apply flex flex-col space-y-4 items-center;
+	}
+	
+	.DocSearch-Screen-Icon {
+		@apply text-gray-300;
+	}
+	
+	.DocSearch-NoResults-Prefill-List {
+		@apply flex w-full justify-center py-4 border-t space-x-2 whitespace-nowrap;
+	}
+	
+	.DocSearch-NoResults-Prefill-List ul {
+		@apply flex flex-col;
+	}
+	
+	.DocSearch-NoResults-Prefill-List ul li {
+		@apply mr-2;
+	}
+	
+	.DocSearch-Help{
+		@apply font-semibold;
+	}
+	
+	.DocSearch-Prefill {
+		@apply text-emerald-500 hover:text-emerald-600 hover:underline;
+	}
+	
+	.DocSearch-Footer {
+		@apply flex flex-row-reverse p-2 pt-1 justify-between bg-gray-50;
+	}
+	
+	.DocSearch-Logo a {
+		@apply flex items-center text-xs text-gray-800 opacity-50;
+	}
+	
+	.DocSearch-Logo .DocSearch-Label {
+		@apply mr-2;
+	}
+	
+	.DocSearch-Commands {
+		@apply flex-1 flex text-xs text-gray-700 -ml-4;
+	}
+	
+	.DocSearch-Commands li {
+		@apply flex items-center ml-4;
+	}
+	
+	.DocSearch-Commands-Key {
+		@apply font-semibold mr-1;
 	}
 }

@@ -1,5 +1,14 @@
 import Alpine from 'alpinejs';
 import intersect from '@alpinejs/intersect';
+// import docsearch from '@docsearch/js';
+
+// docsearch({
+// 	appId: '',
+// 	apiKey: '',
+// 	indexName: '',
+// 	container: '#docsearch',
+// 	insights: true,
+// });
 
 Alpine.plugin(intersect);
 

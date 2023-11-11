@@ -10,7 +10,8 @@ module.exports = {
   ],
   darkMode: 'class',
   safelist: [
-    { pattern: /torchlight/i }
+    { pattern: /torchlight/i },
+    { pattern: /DocSearch/i },
   ],
   theme: {
     fontSize: {
