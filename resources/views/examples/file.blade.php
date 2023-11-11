@@ -5,7 +5,7 @@
 		<meta name="title" content="Example - Verbs">
 	</x-slot:meta>
 	
-	<article>
+	<article class="prose max-w-none w-full docsearch-content">
 		<div class="prose">
 			
 			<h1>

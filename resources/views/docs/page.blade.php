@@ -30,7 +30,7 @@
 	</x-slot:meta>
 	
 	<div class="flex">
-		<article x-data class="prose max-w-none w-full">
+		<article x-data class="prose max-w-none w-full docsearch-content">
 			
 			<h1>
 				{{ $page->title }}
