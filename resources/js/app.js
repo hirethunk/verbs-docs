@@ -15,6 +15,7 @@ Alpine.data('onThisPage', () => ({
 				title: node.parentNode.textContent.replace('#', ''),
 				permalink: node.id,
 				node: node.parentNode,
+				level: parseInt(node.parentNode.tagName.replace(/\D/, '')),
 				top: Infinity,
 			}));
 		
