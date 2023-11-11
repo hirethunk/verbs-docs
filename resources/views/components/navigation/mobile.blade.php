@@ -81,9 +81,11 @@
 												
 												<div class="ml-4 p-2 border-l border-l-indigo-100">
 													@foreach($sub_navigation->sections as $sub_section)
-														<x-navigation.section>
-															{{ $sub_section->title }}
-														</x-navigation.section>
+														@if($sub_navigation->headings)
+															<x-navigation.section>
+																{{ $sub_section->title }}
+															</x-navigation.section>
+														@endif
 														@foreach($sub_section->items as $sub_item)
 															<x-navigation.item
 																:href="route('examples.section.item', [$sub_navigation->prefix, $sub_section, $sub_item])"

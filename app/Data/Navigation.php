@@ -11,6 +11,8 @@ class Navigation extends Data
 {
 	public ?DataCollection $sections = null;
 	
+	public bool $headings = true;
+	
 	public static function docs(): static
 	{
 		return app(static::class);
@@ -41,6 +43,9 @@ class Navigation extends Data
 	) {
 		$this->sections = NavigationSection::collection(File::json(storage_path($this->path)))
 			->each(fn(NavigationSection $section) => $section->parent = $this);
+		
+		$this->headings = $this->sections->toCollection()
+			->contains(fn(NavigationSection $section) => $section->items->count() > 1);
 	}
 	
 	public function section(string $slug): NavigationSection
