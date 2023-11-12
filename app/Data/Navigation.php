@@ -41,7 +41,7 @@ class Navigation extends Data
 		public string $prefix,
 		public ?string $namespace = null,
 	) {
-		$this->sections = NavigationSection::collection(File::json(storage_path($this->path)))
+		$this->sections = NavigationSection::collection(File::json(resource_path($this->path)))
 			->each(fn(NavigationSection $section) => $section->parent = $this);
 		
 		$this->headings = $this->sections->toCollection()

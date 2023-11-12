@@ -18,7 +18,7 @@ class Page implements Htmlable
 		public string $filename,
 		public ?string $title = null,
 	) {
-		$markdown = file_get_contents(storage_path("docs/{$this->version}/docs/{$this->filename}"));
+		$markdown = file_get_contents(resource_path("docs/{$this->version}/docs/{$this->filename}"));
 		$this->content = (new MarkdownConverter())->convert($markdown);
 		
 		if ($this->content instanceof RenderedContentWithFrontMatter) {

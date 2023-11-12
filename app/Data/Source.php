@@ -18,7 +18,7 @@ class Source
 	public function __construct(
 		string $path,
 	) {
-		$raw = File::get(storage_path($path));
+		$raw = File::get(resource_path($path));
 		
 		$pattern = '/(<\?php)\s*((?:\s*namespace[^;]+;\s*)*(?:\s*use[^;]+;\s*)*)\s*(?:\s*\/\*\*\s*(.*)\s+\*\/)?\s*(.*)/ism';
 		preg_match($pattern, $raw, $matches);

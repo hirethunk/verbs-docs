@@ -18,26 +18,26 @@ for v in "${DOCS_VERSIONS[@]}"; do
   echo "======================================"
   echo ""
   
-  if [ -d "storage/docs/_tmp" ]; then
+  if [ -d "resources/docs/_tmp" ]; then
     echo "Removing previous temp files..."
-    rm -rf storage/docs/_tmp
+    rm -rf resources/docs/_tmp
   fi
   
   echo "Cloning $v..."
-  git clone --quiet --single-branch --branch "$v" git@github.com:hirethunk/verbs.git "storage/docs/_tmp"
+  git clone --quiet --single-branch --branch "$v" git@github.com:hirethunk/verbs.git "resources/docs/_tmp"
   
-  if [ -d "storage/docs/$v" ]; then
+  if [ -d "resources/docs/$v" ]; then
     echo "Removing previous copy of $v..."
-    rm -rf "storage/docs/$v"
+    rm -rf "resources/docs/$v"
   fi
   
   echo "Copying $v docs..."
-  mkdir -p "storage/docs/$v"
-  mv -f "storage/docs/_tmp/docs" "storage/docs/$v/docs"
-  mv -f "storage/docs/_tmp/examples" "storage/docs/$v/examples"
+  mkdir -p "resources/docs/$v"
+  mv -f "resources/docs/_tmp/docs" "resources/docs/$v/docs"
+  mv -f "resources/docs/_tmp/examples" "resources/docs/$v/examples"
   
   echo "Removing temp files..."
-  rm -rf storage/docs/_tmp
+  rm -rf resources/docs/_tmp
   
   echo ""
 done

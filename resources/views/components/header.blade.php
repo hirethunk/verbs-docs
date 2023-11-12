@@ -22,7 +22,7 @@
 		</a>
 		
 		{{-- Top Menu --}}
-		<div class="flex flex-1 gap-x-4 self-stretch items-center lg:gap-x-6 lg:pl-8">
+		<div class="flex flex-1 gap-x-4 self-stretch items-center lg:gap-x-6 lg:px-8">
 			
 			{{-- Algolia docsearch container --}}
 			<div id="docsearch" class="flex-grow max-w-sm flex"></div>
@@ -48,8 +48,10 @@
 			--}}
 			
 			{{-- Right Side --}}
-			<div class="flex items-center gap-x-4 lg:gap-x-6">
-			
+			<div class="ml-auto flex items-center gap-x-4 lg:gap-x-6">
+				{{--
+				<x-version-switcher />
+				--}}
 			</div>
 		</div>
 	</div>
