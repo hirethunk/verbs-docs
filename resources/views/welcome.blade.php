@@ -23,7 +23,10 @@
                 :class="{ 'max-h-96': !expanded }"
             >
                 <pre class="m-0 p-0 rounded overflow-x-auto order-3">
-                    <x-torchlight-code language="php" :contents="resource_path('examples/welcome/from.php')" />
+                    <x-torchlight-code 
+                        language="php" 
+                        :contents="preg_replace('/^\s*(<\?php)\s*/i', '', file_get_contents(resource_path('examples/welcome/from.php')))" 
+                    />
                 </pre>
                 <div 
                     class="flex flex-col items-center justify-end p-4 bg-gradient-to-b from-30% from-transparent to-90% to-white absolute inset-0 z-10"
@@ -46,7 +49,10 @@
             </p>
             <div class="max-h-96 overflow-hidden relative">
                 <pre class="m-0 p-0 rounded overflow-x-auto order-4">
-                    <x-torchlight-code language="php" :contents="resource_path('examples/welcome/to.php')" />
+                    <x-torchlight-code 
+                        language="php"
+                        :contents="preg_replace('/^\s*(<\?php)\s*/i', '', file_get_contents(resource_path('examples/welcome/to.php')))"
+                    />
                 </pre>
             </div>
         </div>

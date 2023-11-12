@@ -1,9 +1,13 @@
 <?php
 
+// When they apply…
 AppliedForJob::fire();
 
+// If put on hold…
 ApplicationPutOnHold::fire();
 
+// When approved…
 ApplicationApproved::fire();
 
+// When rejected…
 ApplicationRejected::fire();
