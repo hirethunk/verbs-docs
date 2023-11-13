@@ -156,6 +156,10 @@
 		@apply bg-indigo-600 text-white;
 	}
 	
+	.DocSearch-Hit-Tree {
+		@apply w-5 h-full ml-3 text-slate-200;
+	}
+	
 	.DocSearch-Hit-source {
 		@apply text-xs font-semibold text-gray-900;
 	}
@@ -165,11 +169,12 @@
 	}
 	
 	.DocSearch-Hit-icon {
-		@apply mr-3;
+		@apply mx-3 mr-3;
 	}
 	
 	.DocSearch-Hit-Container {
-		@apply flex cursor-default select-none items-center px-4 py-2;
+		@apply flex cursor-default select-none items-center;
+		min-height: theme(height.14);
 	}
 	
 	.DocSearch-Hit-content-wrapper {
@@ -177,7 +182,15 @@
 	}
 	
 	.DocSearch-Hit-title {
-		@apply flex-auto truncate;
+		@apply block font-semibold text-sm whitespace-nowrap truncate;
+	}
+	
+	.DocSearch-Hit-path {
+		@apply block text-xs whitespace-nowrap truncate text-gray-500;
+	}
+
+	.DocSearch-Hit[aria-selected=true] .DocSearch-Hit-path {
+		@apply text-white;
 	}
 	
 	.DocSearch-Hit-title mark {
@@ -185,7 +198,7 @@
 	}
 	
 	.DocSearch-Hit-action {
-		@apply ml-auto;
+		@apply ml-auto mr-3;
 	}
 	
 	.DocSearch-StartScreen {
