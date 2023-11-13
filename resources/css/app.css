@@ -12,7 +12,7 @@
 
 /* Torchlight Styles */
 @layer components {
-	pre, .prose pre {
+	.prose pre {
 		@apply my-4 rounded overflow-x-auto;
 	}
 	
