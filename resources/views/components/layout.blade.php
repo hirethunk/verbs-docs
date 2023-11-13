@@ -10,6 +10,9 @@
 		{{ $title ? "$title - Verbs" : 'Verbs' }}
 	</title>
 	{{ $meta ?? null }}
+	@production
+		<script defer data-domain="verbs.thunk.dev" src="https://plausible.io/js/script.outbound-links.js"></script>
+	@endproduction
 </head>
 <body class="flex flex-col min-h-full bg-[#f8ecdb] antialiased dark:bg-zinc-900">
 
