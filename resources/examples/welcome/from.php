@@ -1,39 +1,33 @@
 <?php
 
+// Keep "status" column and associated timestamps in sync
 Application::saving(function($app) {
-    // Handle "approved" status
-    if ($app->isDirty('approved_at') && $app->approved_at) {
-        $app->status = 'approved';
+    if (! $app->isDirty('status')) {
+        return;
+    }
+    
+    if ($app->status === 'approved') {
+        $app->approved_at = now();
         $app->rejected_at = null;
         $app->on_hold_at = null;
     }
-
-    // Handle "rejected" status
-    if ($app->isDirty('rejected_at') && $app->rejected_at) {
-        $app->status = 'rejected';
+    
+    if ($app->status === 'rejected') {
+        $app->rejected_at = now();
         $app->approved_at = null;
         $app->on_hold_at = null;
     }
-
-    // Handle "on hold" status
-    if ($app->isDirty('on_hold_at') && $app->on_hold_at) {
-        $app->status = 'on hold';
+    
+    if ($app->status === 'on-hold') {
+        $app->on_hold_at = now();
         $app->approved_at = null;
         $app->rejected_at = null;
     }
     
-    // Handle initial state, or getting reset back to "applied"
-    if (
-        $app->isDirty('applied_at')
-        || (! $app->on_hold_at && ! $app->rejected_at && ! $app->approved_at)
-    ) {
-        $app->rejected_at = null;
+    if ($app->status === 'applied') {
+        $app->applied_at ??= now();
         $app->approved_at = null;
+        $app->rejected_at = null;
         $app->on_hold_at = null;
-        $app->status = 'applied';
-
-        if (! $app->applied_at) {
-            $app->applied_at = now();
-        }
     }
 });
