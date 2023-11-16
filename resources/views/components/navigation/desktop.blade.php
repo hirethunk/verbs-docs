@@ -4,7 +4,7 @@
 		
 		<div class="flex h-24 mt-5 shrink-0 items-center">
 			<a href="/">
-				<x-navigation.logo class="h-24 w-auto" />
+				<x-navigation.logo class="h-24 w-auto" animate />
 			</a>
 		</div>
 		
