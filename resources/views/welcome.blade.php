@@ -1,4 +1,21 @@
 <x-layout>
+    
+    <x-slot:meta>
+        {{-- Primary Meta Tags --}}
+        <meta name="title" content="Verbs: Event sourcing for PHP artisans">
+        
+        {{-- Open Graph / Facebook --}}
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url('/') }}">
+        <meta property="og:title" content="Verbs: Event sourcing for PHP artisans">
+        <meta property="og:image" content="{{ asset('og-logo.png') }}">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="{{ url('/') }}">
+        <meta property="twitter:title" content="Verbs: Event sourcing for PHP artisans">
+        <meta property="twitter:image" content="{{ asset('og-logo.png') }}">
+    </x-slot:meta>
 
     <x-navigation.logo class="h-24 w-auto mb-5 mx-auto lg:hidden" />
 
