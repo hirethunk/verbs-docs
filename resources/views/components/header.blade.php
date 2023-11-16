@@ -1,5 +1,5 @@
 <div class="sticky top-0 z-40">
-	<div class="flex h-16 items-center gap-x-4 border-b border-gray-200 bg-white bg-opacity-80 px-4 shadow-sm backdrop-blur sm:gap-x-6 sm:px-6 lg:px-0 lg:shadow-none">
+	<div class="flex h-16 items-center gap-x-4 bg-white bg-opacity-80 px-4 shadow-sm backdrop-blur sm:gap-x-6 sm:px-6 lg:px-0 lg:shadow-none">
 		
 		{{-- Mobile Nav Button --}}
 		<button
@@ -54,5 +54,12 @@
 				--}}
 			</div>
 		</div>
+	</div>
+	<div class="flex h-1.5">
+		<div class="bg-[#eb1318] flex-1"></div>
+		<div class="bg-[#4236e2] flex-1"></div>
+		<div class="bg-[#328a4d] flex-1"></div>
+		<div class="bg-[#d6b421] flex-1"></div>
+		<div class="bg-[#55408b] flex-1"></div>
 	</div>
 </div>
