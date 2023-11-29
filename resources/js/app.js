@@ -1,5 +1,6 @@
 import Alpine from 'alpinejs';
 import intersect from '@alpinejs/intersect';
+import anchor from '@alpinejs/anchor';
 import docsearch from '@docsearch/js';
 
 docsearch({
@@ -11,6 +12,7 @@ docsearch({
 });
 
 Alpine.plugin(intersect);
+Alpine.plugin(anchor);
 
 window.Alpine = Alpine;
 

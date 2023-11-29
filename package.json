@@ -15,6 +15,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@alpinejs/anchor": "^3.13.3",
         "@alpinejs/intersect": "^3.13.2",
         "@docsearch/js": "^3.5.2",
         "alpinejs": "^3.13.2"
