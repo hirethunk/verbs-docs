@@ -9,7 +9,7 @@ cd "$BIN_DIR"
 cd ..
 
 DOCS_VERSIONS=(
-  main
+  "docs-rewrite-2024-Feb"
 )
 
 for v in "${DOCS_VERSIONS[@]}"; do
