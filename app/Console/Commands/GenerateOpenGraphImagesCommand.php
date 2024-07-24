@@ -11,6 +11,9 @@ use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
 use Illuminate\Console\Command;
 use Throwable;
+use function Laravel\Prompts\confirm;
+use function Laravel\Prompts\error;
+use function Laravel\Prompts\intro;
 
 class GenerateOpenGraphImagesCommand extends Command
 {
@@ -20,6 +23,12 @@ class GenerateOpenGraphImagesCommand extends Command
 	
 	public function handle(Navigation $navigation)
 	{
+		intro('Before generating open graph images, you must start a "chromedriver" process and run "php artisan serve" in another process.');
+		if (!confirm('Are both processes running?')) {
+			error('Aborted');
+			return 1;
+		}
+		
 		$this->driver = $this->driver();
 		
 		register_shutdown_function(function() {
