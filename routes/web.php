@@ -33,7 +33,11 @@ Route::get('/docs', function() {
 		$section = app(Navigation::class)->sections->first();
 		$item = $section->items->first();
 		return to_route('docs.section.item', [$section->slug, $item->slug]);
-	} catch (Throwable) {
+	} catch (Throwable $exception) {
+		if (app()->isLocal()) {
+			throw $exception;
+		}
+		
 		abort(404);
 	}
 });
@@ -43,7 +47,11 @@ Route::get('/docs/{section}', function(string $section) {
 		$section = app(Navigation::class)->section($section);
 		$item = $section->items->first();
 		return to_route('docs.section.item', [$section->slug, $item->slug]);
-	} catch (Throwable) {
+	} catch (Throwable $exception) {
+		if (app()->isLocal()) {
+			throw $exception;
+		}
+		
 		abort(404);
 	}
 });
@@ -60,7 +68,11 @@ Route::get('/docs/{section}/{item}', function(string $section, string $item) {
 			'item' => $item,
 			'page' => $item->page()
 		]);
-	} catch (Throwable) {
+	} catch (Throwable $exception) {
+		if (app()->isLocal()) {
+			throw $exception;
+		}
+		
 		abort(404);
 	}
 })->name('docs.section.item');
@@ -76,7 +88,11 @@ Route::get('/examples/{example}', function(string $example) {
 		$section = $navigation->sections->first();
 		$item = $section->items->first();
 		return to_route('examples.section.item', [$example, $section->slug, $item->slug]);
-	} catch (Throwable) {
+	} catch (Throwable $exception) {
+		if (app()->isLocal()) {
+			throw $exception;
+		}
+		
 		abort(404);
 	}
 });
@@ -87,7 +103,11 @@ Route::get('/examples/{example}/{section}', function(string $example, string $se
 		$section = $navigation->section($section);
 		$item = $section->items->first();
 		return to_route('examples.section.item', [$example, $section->slug, $item->slug]);
-	} catch (Throwable) {
+	} catch (Throwable $exception) {
+		if (app()->isLocal()) {
+			throw $exception;
+		}
+		
 		abort(404);
 	}
 });
@@ -116,7 +136,11 @@ Route::get('/examples/{example}/{section}/{item}', function(string $example, str
 			'source' => $item->source(),
 		]);
 		
-	} catch (Throwable) {
+	} catch (Throwable $exception) {
+		if (app()->isLocal()) {
+			throw $exception;
+		}
+		
 		abort(404);
 	}
 	
